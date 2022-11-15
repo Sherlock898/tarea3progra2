@@ -1,17 +1,23 @@
 package expendesos;
 
-public class Expendedor {
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class Expendedor{
     private Deposito depCoca;
     private Deposito depFanta;
     private Deposito depSprite;
     private DepositoVuelto depVuelto;
     private int precioBebidas;
+    private int x, y;
     
-    public Expendedor(int numBebidas, int precioBebidas){
+    public Expendedor(int numBebidas, int precioBebidas, int x, int y){
+        this.x = x;
+        this.y = y;
         depVuelto = new DepositoVuelto();
-        depCoca = new Deposito();
-        depFanta= new Deposito();
-        depSprite = new Deposito();
+        depCoca = new Deposito(x + 20, y + 20);
+        depFanta= new Deposito(x + 20, y + 180);
+        depSprite = new Deposito(x + 20, y + 340);
         for(int i = 0; i < numBebidas; i++){
             depCoca.addBebida(new CocaCola(i));
             depFanta.addBebida(new Fanta(i + 100));
@@ -63,5 +69,19 @@ public class Expendedor {
     
     public Moneda getVuelto(){
         return depVuelto.getMoneda();
+    }
+    
+    public void paint(Graphics g){
+        //super();
+        g.setColor(Color.BLACK);
+        g.fillRect(x, y, 370, 500);
+        depCoca.paint(g);
+        depFanta.paint(g);
+        depSprite.paint(g);
+    }
+    
+    public void setXY(int x, int y){
+        this.x = x;
+        this.y = y;
     }
 }
