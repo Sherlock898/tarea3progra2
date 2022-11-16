@@ -10,14 +10,23 @@ public class Expendedor{
     private DepositoVuelto depVuelto;
     private int precioBebidas;
     private int x, y;
+    private static final int w = 370;
+    private static final int h = 500;
     
     public Expendedor(int numBebidas, int precioBebidas, int x, int y){
         this.x = x;
         this.y = y;
+
         depVuelto = new DepositoVuelto();
-        depCoca = new Deposito(x + 20, y + 20);
-        depFanta= new Deposito(x + 20, y + 180);
-        depSprite = new Deposito(x + 20, y + 340);
+        depCoca = new Deposito();
+        depFanta= new Deposito();
+        depSprite = new Deposito();
+
+        depVuelto.setXY(x + w + 10, y);
+        depCoca.setXY(x + 20, y + 20);
+        depFanta.setXY(x + 20, y + 180);
+        depSprite.setXY(x + 20, y + 340);
+
         for(int i = 0; i < numBebidas; i++){
             depCoca.addBebida(new CocaCola(i));
             depFanta.addBebida(new Fanta(i + 100));
@@ -74,10 +83,11 @@ public class Expendedor{
     public void paint(Graphics g){
         //super();
         g.setColor(Color.BLACK);
-        g.fillRect(x, y, 370, 500);
+        g.fillRect(x, y, w, h);
         depCoca.paint(g);
         depFanta.paint(g);
         depSprite.paint(g);
+        depVuelto.paint(g);
     }
     
     public void setXY(int x, int y){

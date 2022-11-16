@@ -16,7 +16,7 @@ public class CocaCola extends Bebida {
     @Override
     public void paint(Graphics g) {
         g.setColor(Color.red);
-        g.fillRect(x, y, 20, 35);
+        g.fillRect(x, y, w, h);
     }
     
 }

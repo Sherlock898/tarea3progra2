@@ -4,7 +4,10 @@ import java.awt.Graphics;
 
 public abstract class Bebida {
     private int numSerie;
+    protected static final int w = 20;
+    protected static final int h = 35;
     protected int x, y;
+
 
     public Bebida(int numSerie){
         this.numSerie = numSerie;

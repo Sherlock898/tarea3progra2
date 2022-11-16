@@ -16,6 +16,6 @@ public class Fanta extends Bebida{
     @Override
     public void paint(Graphics g) {
         g.setColor(Color.orange);
-        g.fillRect(x, y, 20, 35);
+        g.fillRect(x, y, w, h);
     }
 }

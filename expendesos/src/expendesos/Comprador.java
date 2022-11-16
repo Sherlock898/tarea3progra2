@@ -1,12 +1,19 @@
 package expendesos;
 
+import java.awt.Graphics;
+import java.awt.Color;
+
 public class Comprador {
     private String sabor;
     private int cantidadTotal;
+    private int x, y;
     
-    public Comprador(Moneda m, int cualBebida, Expendedor exp){
+    public Comprador(Moneda m, int cualBebida, Expendedor exp, int x, int y){
         cantidadTotal = 0;
         Bebida bebida;
+        this.x = x;
+        this.y = y;
+
         try {
             bebida = exp.comprarBebida(m, cualBebida);
         } catch (NoHayBebidaException e) {
@@ -40,5 +47,20 @@ public class Comprador {
 
     public String quebebiste(){
         return sabor;
+    }
+
+    public void paint(Graphics g){
+        g.setColor(Color.PINK);
+        g.fillRect(x, y, 300, 300);
+        g.setColor(Color.BLACK);
+        //Ojos
+        //g.fillRect(x + 30, y + 30, 90, 90);
+        //g.fillRect(x + 180, y + 30, 90, 90);
+        //Boca
+        g.fillRect(x + 30, y + 200, 240, 30);
+
+        //Otros ojos:
+        g.fillOval(x + 30, y + 30, 90, 100);
+        g.fillOval(x + 180, y + 30, 90, 100);
     }
 }

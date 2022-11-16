@@ -16,7 +16,7 @@ public class Sprite extends Bebida{
     @Override
     public void paint(Graphics g) {
         g.setColor(Color.green);
-        g.fillRect(x, y, 20, 35);
+        g.fillRect(x, y, w, h);
     }
     
 }
