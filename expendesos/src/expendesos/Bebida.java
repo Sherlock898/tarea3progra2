@@ -1,5 +1,6 @@
 package expendesos;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public abstract class Bebida {
@@ -7,6 +8,7 @@ public abstract class Bebida {
     protected static final int w = 20;
     protected static final int h = 35;
     protected int x, y;
+    protected Color color;
 
 
     public Bebida(int numSerie){
@@ -22,6 +24,10 @@ public abstract class Bebida {
         this.y = y;
     }
     
-    public abstract void paint(Graphics g);
+    public void paint(Graphics g){
+        g.setColor(color);
+        g.fillRect(x, y, w, h);
+        
+    }
     public abstract String beber();
 }

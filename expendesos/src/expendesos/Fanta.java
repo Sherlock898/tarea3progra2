@@ -1,11 +1,11 @@
 package expendesos;
 
 import java.awt.Color;
-import java.awt.Graphics;
 
 public class Fanta extends Bebida{
     public Fanta(int numSerie){
         super(numSerie);
+        color = Color.ORANGE;
     }
 
     @Override
@@ -13,9 +13,4 @@ public class Fanta extends Bebida{
         return "Fanta";
     }
     
-    @Override
-    public void paint(Graphics g) {
-        g.setColor(Color.orange);
-        g.fillRect(x, y, w, h);
-    }
 }

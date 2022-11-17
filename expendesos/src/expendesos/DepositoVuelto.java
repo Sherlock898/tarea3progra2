@@ -34,5 +34,9 @@ public class DepositoVuelto {
     public void paint(Graphics g){
         g.setColor(Color.GRAY);
         g.fillRect(x, y, w, h);
+        
+        for(int i = 0; i < arr.size(); i++){
+            
+        }
     }
 }
