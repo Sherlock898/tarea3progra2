@@ -5,9 +5,10 @@ import java.awt.Color;
 
 public class DepositoVuelto {
     private ArrayList<Moneda> arr;
-    private int x, y;
-    private static final int w = 50;
-    private static final int h = 300;
+    private int x;
+    private int y;
+    private int w;
+    private int h;
     
     public DepositoVuelto(){
         arr = new ArrayList<Moneda>();

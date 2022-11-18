@@ -25,6 +25,9 @@ public class Deposito {
     
     public Bebida getBebida(){
         if(arr.size() > 0){
+            for(int i = 1; i < arr.size(); i++){
+                arr.get(i).setXY(x + (int)(0.15 * w), (int)(y + h - i * (0.7 * 0.4 * w + 0.03 * h)));
+            }
             return arr.remove(0);
         }
         else{

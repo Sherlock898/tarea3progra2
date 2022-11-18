@@ -7,20 +7,25 @@ public class Expendedor{
     private Deposito depCoca; 
     private Deposito depFanta;
     private Deposito depSprite;
+    private Deposito depEntrega;
     private DepositoVuelto depVuelto;
     private int precioBebidas;
     private int x, y;
-    private static final int w = 550;
-    private static final int h = 600;
+    private int w;
+    private int h;
     
-    public Expendedor(int numBebidas, int precioBebidas, int x, int y){
+    public Expendedor(int numBebidas, int precioBebidas, int x, int y, int w, int h){
         this.x = x;
         this.y = y;
+        this.w = w;
+        this.h = h;
 
-        depVuelto = new DepositoVuelto();
         depCoca = new Deposito((int)(x + 0.05 * w), (int)(y + 0.05*h), (int)(0.182*w), (int)(0.70*h));
         depFanta= new Deposito((int)(x + 0.282 * w), (int)(y + 0.05*h), (int)(0.182*w), (int)(0.70*h));
         depSprite = new Deposito((int)(x + 0.514 * w), (int)(y + 0.05*h), (int)(0.182*w), (int)(0.70*h));
+        depEntrega = new Deposito((int)(x + (0.325*w)), (int)(y + 0.82*h)  , (int)(0.35*w), (int)(0.11 * h));
+
+        depVuelto = new DepositoVuelto();
 
         for(int i = 0; i < numBebidas; i++){
             depCoca.addBebida(new CocaCola(i, (int)(0.7 * 0.182 * w), (int)(0.8 * 0.182 * w *  0.4)));
@@ -76,12 +81,12 @@ public class Expendedor{
     }
     
     public void paint(Graphics g){
-        //super();
         g.setColor(Color.BLACK);
         g.fillRect(x, y, w, h);
         depCoca.paint(g);
         depFanta.paint(g);
         depSprite.paint(g);
+        depEntrega.paint(g);
         depVuelto.paint(g);
     }
     

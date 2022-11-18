@@ -30,6 +30,8 @@ public abstract class Bebida {
     public void paint(Graphics g){
         g.setColor(color);
         g.fillRect(x, y, w, h);
+        g.setColor(Color.black);        
+        g.drawString(Integer.toString(numSerie), x + (int)(w / 2), y + (int)(h / 2));
         
     }
     public abstract String beber();
