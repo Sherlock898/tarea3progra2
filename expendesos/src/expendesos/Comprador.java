@@ -62,5 +62,9 @@ public class Comprador {
         //Otros ojos:
         g.fillOval(x + 30, y + 30, 90, 100);
         g.fillOval(x + 180, y + 30, 90, 100);
+
+        g.setColor(Color.RED);
+        g.fillRect(x + 77, y + 130, 25, 1000);
+        g.fillRect(x + 227, y + 130, 25, 1000);
     }
 }

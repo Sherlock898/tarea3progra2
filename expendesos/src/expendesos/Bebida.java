@@ -5,14 +5,17 @@ import java.awt.Graphics;
 
 public abstract class Bebida {
     private int numSerie;
-    protected static final int w = 20;
-    protected static final int h = 35;
-    protected int x, y;
+    protected int x;
+    protected int y;
+    protected int w = 20;
+    protected int h = 35;
     protected Color color;
 
 
-    public Bebida(int numSerie){
+    public Bebida(int numSerie, int w, int h){
         this.numSerie = numSerie;
+        this.w = w;
+        this.h = h;
     }
 
     public int getSerie(){

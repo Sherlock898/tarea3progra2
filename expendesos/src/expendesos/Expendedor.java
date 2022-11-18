@@ -4,33 +4,28 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Expendedor{
-    private Deposito depCoca;
+    private Deposito depCoca; 
     private Deposito depFanta;
     private Deposito depSprite;
     private DepositoVuelto depVuelto;
     private int precioBebidas;
     private int x, y;
-    private static final int w = 370;
-    private static final int h = 500;
+    private static final int w = 550;
+    private static final int h = 600;
     
     public Expendedor(int numBebidas, int precioBebidas, int x, int y){
         this.x = x;
         this.y = y;
 
         depVuelto = new DepositoVuelto();
-        depCoca = new Deposito();
-        depFanta= new Deposito();
-        depSprite = new Deposito();
-
-        depVuelto.setXY(x + w + 10, y);
-        depCoca.setXY(x + 20, y + 20);
-        depFanta.setXY(x + 20, y + 180);
-        depSprite.setXY(x + 20, y + 340);
+        depCoca = new Deposito((int)(x + 0.05 * w), (int)(y + 0.05*h), (int)(0.182*w), (int)(0.70*h));
+        depFanta= new Deposito((int)(x + 0.282 * w), (int)(y + 0.05*h), (int)(0.182*w), (int)(0.70*h));
+        depSprite = new Deposito((int)(x + 0.514 * w), (int)(y + 0.05*h), (int)(0.182*w), (int)(0.70*h));
 
         for(int i = 0; i < numBebidas; i++){
-            depCoca.addBebida(new CocaCola(i));
-            depFanta.addBebida(new Fanta(i + 100));
-            depSprite.addBebida(new Sprite(i + 200));
+            depCoca.addBebida(new CocaCola(i, (int)(0.7 * 0.182 * w), (int)(0.8 * 0.182 * w *  0.4)));
+            depFanta.addBebida(new Fanta(i + 100, (int)(0.7 * 0.182 * w), (int)(0.8 * 0.182 * w *  0.4)));
+            depSprite.addBebida(new Sprite(i + 200, (int)(0.7 * 0.182 * w), (int)(0.8 * 0.182 * w *  0.4)));
         }
         this.precioBebidas = precioBebidas;
     }

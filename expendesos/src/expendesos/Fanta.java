@@ -3,8 +3,8 @@ package expendesos;
 import java.awt.Color;
 
 public class Fanta extends Bebida{
-    public Fanta(int numSerie){
-        super(numSerie);
+    public Fanta(int numSerie, int w, int h){
+        super(numSerie, w, h);
         color = Color.ORANGE;
     }
 

@@ -9,7 +9,7 @@ public class PanelPrincipal extends JPanel{
     private Expendedor exp;
     
     public PanelPrincipal () {
-        exp = new Expendedor(20, 110, 700, 110);
+        exp = new Expendedor(20, 110, 690, 60);
         com = new Comprador(new Moneda100(), 1, exp, 30, 50);
         this.setBackground(Color.white);
     }

@@ -6,19 +6,21 @@ import java.util.ArrayList;
 public class Deposito {
     private ArrayList<Bebida> arr;
     private int x, y;
-    private static final int w = 330;
-    private static final int h = 140;
+    private int w;
+    private int h;
     
-    public Deposito(){
+    public Deposito(int x, int y, int w, int h){
         arr = new ArrayList<Bebida>();
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
     }
     
     public void addBebida(Bebida bebida){
         arr.add(bebida);
         //Se considera capacidad maxima de un deposito = 20
-        int y_margin = arr.size() - 1 < 10 ? 0 : 1;
-        bebida.setXY(x + ((w - 200) / 11) + (((w - 200) / 11) + 20) * ((arr.size() - 1)%10) , y + 10 + 45 * y_margin);
-        //bebida.setXY(x + 20 * ((arr.size() - 1)%10) , y + 10 + 45 * y_margin);
+        bebida.setXY(x + (int)(0.15 * w), (int)(y + h - arr.size() * (0.7 * 0.4 * w + 0.03 * h)));
     }
     
     public Bebida getBebida(){

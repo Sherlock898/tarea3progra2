@@ -3,8 +3,8 @@ package expendesos;
 import java.awt.Color;
 
 public class CocaCola extends Bebida {
-    public CocaCola(int numSerie){
-        super(numSerie);
+    public CocaCola(int numSerie, int w, int h){
+        super(numSerie, w, h);
         color = Color.RED;
     }
 
