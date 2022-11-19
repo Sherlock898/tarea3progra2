@@ -5,39 +5,44 @@ import java.awt.Color;
 
 public class DepositoVuelto {
     private ArrayList<Moneda> arr;
-    private int x;
-    private int y;
-    private int w;
-    private int h;
+    private Transform t;
     
-    public DepositoVuelto(){
+    public DepositoVuelto(Transform t){
         arr = new ArrayList<Moneda>();
+        this.t = t;    
     }
     
     public void addMoneda(Moneda moneda){
+        if(moneda == null){
+            return;
+        }
         arr.add(moneda);
+        arr.get(0).setXY((int)(t.w - arr.get(0).getTransform().w ) , (int)(t.h - arr.get(0).getTransform().h));
     }
     
     public Moneda getMoneda(){
         if(arr.size() > 0){
-            return arr.remove(0);
+            Moneda m = arr.remove(0);
+            if(arr.size() > 0){
+                arr.get(0).setXY((int)(t.w - arr.get(0).getTransform().w) , (int)(t.h - arr.get(0).getTransform().h));
+            }
+            return m;
         }
         else{
             return null;
         }
     }
-    
-    public void setXY(int x, int y){
-        this.x = x;
-        this.y = y;
-    }
 
-    public void paint(Graphics g){
+    public Transform getTransform(){
+        return t;
+    }
+    
+    public void paint(Graphics g, int px, int py){
         g.setColor(Color.GRAY);
-        g.fillRect(x, y, w, h);
+        g.fillRect(t.x + px, t.y + py, t.w, t.h);
         
-        for(int i = 0; i < arr.size(); i++){
-            
+        if(arr.size() > 0) {
+            arr.get(0).paint(g, t.x + px, t.y + py);
         }
     }
 }

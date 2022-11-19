@@ -6,10 +6,10 @@ import java.awt.event.ActionListener;
 
 public class BotonSelector extends BotonOculto{
     private int seleccion;
-    private Color color;
+    protected Color color;
 
-    public BotonSelector(int x, int y, int w, int h, ActionListener al, int seleccion){
-        super(x, y, w, h, al);
+    public BotonSelector(Transform t, int px, int py, ActionListener al, int seleccion){
+        super(t, px, py, al);
         this.seleccion = seleccion;
 
         switch (seleccion) {
@@ -26,10 +26,10 @@ public class BotonSelector extends BotonOculto{
         }
     }
 
-    public void paint(Graphics g){
+    public void paint(Graphics g, int px, int py){
         super.paint(g);
         g.setColor(color);
-        g.fillRect(x, y, w, h);
+        g.fillRect(t.x + px, t.y + py, t.w, t.h);
     }
 
     public int getSeleccion(){

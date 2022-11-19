@@ -5,17 +5,13 @@ import java.awt.Graphics;
 
 public abstract class Bebida {
     private int numSerie;
-    protected int x;
-    protected int y;
-    protected int w = 20;
-    protected int h = 35;
+    private Transform t;
     protected Color color;
 
 
     public Bebida(int numSerie, int w, int h){
+        t = new Transform(0, 0, w, h);
         this.numSerie = numSerie;
-        this.w = w;
-        this.h = h;
     }
 
     public int getSerie(){
@@ -23,15 +19,19 @@ public abstract class Bebida {
     }
     
     public void setXY(int x, int y){
-        this.x = x;
-        this.y = y;
+        t.x = x;
+        t.y = y;
+    }
+
+    public Transform getTransform(){
+        return t;
     }
     
-    public void paint(Graphics g){
+    public void paint(Graphics g, int px, int py){
         g.setColor(color);
-        g.fillRect(x, y, w, h);
+        g.fillRect(t.x + px, t.y + py, t.w, t.h);
         g.setColor(Color.black);        
-        g.drawString(Integer.toString(numSerie), x + (int)(w / 2), y + (int)(h / 2));
+        g.drawString(Integer.toString(numSerie), t.x + px + (int)(t.w / 2), t.y + py + (int)(t.h / 2));
         
     }
     public abstract String beber();
