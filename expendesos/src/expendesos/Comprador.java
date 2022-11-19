@@ -15,7 +15,7 @@ public class Comprador {
         this.y = y;
 
         try {
-            bebida = exp.comprarBebida(m, cualBebida);
+            exp.comprarBebida(m, cualBebida);
         } catch (NoHayBebidaException e) {
             cantidadTotal += exp.getVuelto().getValor();
             sabor = "Nada";
@@ -32,7 +32,7 @@ public class Comprador {
             return;
         }
 
-        sabor = bebida.beber();
+        //sabor = bebida.beber();
         
         Moneda vuelto = exp.getVuelto();
         while(vuelto != null){

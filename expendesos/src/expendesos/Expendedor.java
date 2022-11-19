@@ -3,7 +3,9 @@ package expendesos;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Expendedor{
+import javax.swing.JPanel;
+
+public class Expendedor extends JPanel{
     private Deposito depCoca; 
     private Deposito depFanta;
     private Deposito depSprite;
@@ -13,6 +15,9 @@ public class Expendedor{
     private int x, y;
     private int w;
     private int h;
+    private BotonDeposito botonCoca;
+    private BotonDeposito botonFanta;
+    private BotonDeposito botonSprite;
     
     public Expendedor(int numBebidas, int precioBebidas, int x, int y, int w, int h){
         this.x = x;
@@ -20,10 +25,10 @@ public class Expendedor{
         this.w = w;
         this.h = h;
 
-        depCoca = new Deposito((int)(x + 0.05 * w), (int)(y + 0.05*h), (int)(0.182*w), (int)(0.70*h));
-        depFanta= new Deposito((int)(x + 0.282 * w), (int)(y + 0.05*h), (int)(0.182*w), (int)(0.70*h));
-        depSprite = new Deposito((int)(x + 0.514 * w), (int)(y + 0.05*h), (int)(0.182*w), (int)(0.70*h));
-        depEntrega = new Deposito((int)(x + (0.325*w)), (int)(y + 0.82*h)  , (int)(0.35*w), (int)(0.11 * h));
+        depCoca = new Deposito((int)(x + 0.05 * w), (int)(y + 0.05*h), (int)(0.182*w), (int)(0.70*h), 20);
+        depFanta= new Deposito((int)(x + 0.282 * w), (int)(y + 0.05*h), (int)(0.182*w), (int)(0.70*h), 20);
+        depSprite = new Deposito((int)(x + 0.514 * w), (int)(y + 0.05*h), (int)(0.182*w), (int)(0.70*h), 20);
+        depEntrega = new Deposito((int)(x + (0.325*w)), (int)(y + 0.82*h)  , (int)(0.35*w), (int)(0.11 * h), 1);
 
         depVuelto = new DepositoVuelto();
 
@@ -35,7 +40,7 @@ public class Expendedor{
         this.precioBebidas = precioBebidas;
     }
     
-    public Bebida comprarBebida(Moneda m, int cual) throws NoHayBebidaException, PagoInsuficienteException, PagoIncorrectoException{
+    public void comprarBebida(Moneda m, int cual) throws NoHayBebidaException, PagoInsuficienteException, PagoIncorrectoException{
         if(m == null){
             throw new PagoIncorrectoException("Pago Incorrecto");
         }
@@ -52,10 +57,10 @@ public class Expendedor{
                 bebida = depCoca.getBebida();
                 break;
             case 2:
-                bebida = depSprite.getBebida();
+                bebida = depFanta.getBebida();
                 break;
             case 3:
-                bebida = depFanta.getBebida();
+                bebida = depSprite.getBebida();
                 break;
             default:
                 depVuelto.addMoneda(m);
@@ -72,7 +77,7 @@ public class Expendedor{
             depVuelto.addMoneda(new Moneda100());
         }
 
-        return bebida;
+        depEntrega.addBebida(bebida);
 
     }
     
